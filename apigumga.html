@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html ng-app="Gumga">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="lib/js/angular/angular.js"></script>
+	<script type="text/javascript">
+		angular.module("Gumga", []);
+		angular.module("Gumga").controller("GumgaCtrl",function($scope, $http){
+			$scope.pessoas = [
+				{"id":1,"oi":null,"version":0,"nome":"Tia Carmem","localizacao":{"latitude":-30.041471,"longitude":-51.2184469},"atividades":["Entreterimento","Massagem"]},
+				{"id":2,"oi":null,"version":0,"nome":"Bar do Jô","localizacao":{"latitude":-23.4653168,"longitude":-51.9432801},"atividades":["Shows","Petiscos","Bebidas"]}
+			];
+
+			$scope.atividades = ["Shows","Petiscos","Bebidas"];
+
+			$scope.adicionarPessoa = function(pessoa){
+				$scope.pessoas.push(angular.copy(pessoa));
+
+				delete $scope.pessoa;
+			}
+
+			$scope.removerPessoa = function(pessoas){
+				$scope.pessoas = pessoas.filter(function(pessoa){
+					if(!pessoa.selecionado) return pessoa;
+				});
+			}
+
+		});
+
+
+	</script>
+	<style type="text/css">
+		.pagina{
+			width: 600px;
+			margin: 0 auto;
+		}
+		body{
+			font-family: sans-serif;
+		}
+
+		table{
+			width: 100%;
+			border-spacing: 0;
+			border: 1px solid #dbdbdb;
+		}
+		table tr td{
+			padding: 20px;
+			vertical-align: top;
+		}
+		table tr th{
+			padding: 8px;
+		}
+		table tr:nth-child(odd){
+			background: #f4f4f4;
+		}
+		table tr:nth-child(even){
+			background: #ededed;
+		}
+
+		ul{
+			list-style: none;
+			padding: 0;
+			width: 100%;
+			border-bottom: 1px solid #dbdbdb;
+		}
+		ul li{
+			padding-bottom: 10px;
+		}
+
+		input,
+		select{
+			width: 95%;
+			padding: 2.3%;
+			margin: 5px 0 5px;
+		}
+		select{
+			width: 100%;
+		}
+
+		button{
+			background: #4486ea;
+			border: 1px solid #4486ea;
+			width: 100%;
+			padding: 20px;
+			color: #ffffff;
+			margin: 5px 0 30px 0;
+		}
+
+		.remover{
+			background: #f82300;
+			border:1px solid #f82300;
+		}
+	</style>
+</head>
+<body ng-controller="GumgaCtrl">
+	<div class="pagina">
+		<div>
+			<h1>Adicionar Pessoa</h1>
+			<input type="text" name="nome" ng-model="pessoa.nome" placeholder="Nome da Pessoa">
+			<input type="text" name="nome" ng-model="pessoa.localizacao.latitude" placeholder="Localização Latitude">
+			<input type="text" name="nome" ng-model="pessoa.localizacao.longitude" placeholder="Localização Longitude">
+			<input type="text" name="nome" ng-model="pessoa.atividades" placeholder="Atividade da Pessoa">
+			<button ng-click="adicionarPessoa(pessoa)">Adicionar Contato</button>
+			<button ng-click="removerPessoa(pessoas)" class="remover">Adicionar Contato</button>
+		</div>
+		<table>
+			<tr>
+				<th></th>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Localizacao</th>
+				<th>Atividades</th>
+			</tr>
+			<tr ng-repeat="pessoa in pessoas">
+				<td><input type="checkbox" ng-model="pessoa.selecionado" style="width: 10px" /></td>
+				<td>{{pessoa.id}}</td>
+				<td>{{pessoa.nome}}</td>
+				<td>
+					<ul ng-repeat="loc in pessoa.localizacao">
+						<li>{{loc}}</li>
+					</ul>
+				</td>
+				<td>
+					{{pessoa.atividades}}
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
