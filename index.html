@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Gumga</title>
+	<script type="text/javascript">
+		var main = function(num){
+			var valor = "";
+			if(num <= 10 && num >= 1){
+				for(var i = 1; i<=10; i++){
+					valor += "<p>Resultado de: "+num+" * "+i+" = "+ num*i +"</p>"
+				}
+
+			} else {
+				document.getElementsByName('numero')[0].value = '';
+				valor = "";
+				alert("O Nomero que você digitou deve ser entre 1 e 10");
+			}
+			document.getElementById('tabela').innerHTML = valor;
+		}
+	</script>
+	<style type="text/css">
+	.pagina{
+		width: 600px;
+		background: #f6f6f6;
+		margin: 0 auto;
+		padding: 20px;
+		font-family: sans-serif;
+	}
+	input{
+		width: 94%;
+		padding: 2.4%;
+		border: 1px solid #cccccc;
+	}
+	p{
+		padding: 20px;
+		margin:0;
+	}
+	p:nth-child(odd){
+		background: #eeeeee;
+	}
+	p:nth-child(even){
+		background: #f4f4f4;
+	}
+	h2{
+		text-align: center;
+		margin: 50px 0 0 0;
+		font-size: 16px;
+		font-weight: 100;
+	}
+	</style>
+</head>
+<body>
+	<div class="pagina">
+		<h1>Teste Gumga</h1>
+		<input type="text" name="numero" placeholder="Digite um numero" onkeyUp="main(value)">
+		<div id="tabela">
+			
+		</div>
+		<h2>By Jefferson</h2>
+	</div>
+</body>
+</html>
