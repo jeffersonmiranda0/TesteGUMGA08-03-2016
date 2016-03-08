@@ -1,0 +1,67 @@
+.pagina{
+	width: 600px;
+	margin: 0 auto;
+	background: #f8f8f8;
+	border: 1px solid #e6e6e6;
+	padding: 20px;
+}
+.formulario input{
+	width: 95%;
+	padding: 2.4%;
+	margin: 5px 0 5px 0;
+	border: 1px solid #e6e6e6;
+	display: block;
+}
+.formulario button{
+	width: 100%;
+	padding: 10px;
+	background: #3d8bff;
+	border: 1px solid #3d8bff;
+	color: #ffffff;
+	cursor: pointer;
+	border-radius: 2px;
+	margin: 5px 0 5px 0;
+}
+.formulario select{
+	width: 100%;
+	padding: 10px;
+	margin: 5px 0 5px 0;
+	border: 1px solid #e6e6e6;
+}
+
+.selecionado{
+	background: #fff9bb;
+	font-weight: bold;
+}
+
+
+body{
+	font-family: sans-serif;
+}
+
+h1{
+	margin: 0;
+}
+
+h2{
+	margin: 20px 0 5px 0;
+}
+
+table{
+	width: 100%;
+	border-spacing: 0;
+	text-align: center;
+}
+table tr th,
+table tr td{
+	padding: 10px;
+}
+table thead tr{
+	background: #e7e7e7;
+}
+table tbody tr:nth-child(odd){
+	background: #f2f2f2;
+}
+table tbody tr:nth-child(even){
+	background: #e7e7e7;
+}
