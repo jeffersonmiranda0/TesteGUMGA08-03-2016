@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="contador">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			font-family: sans-serif;
+		}
+		.pagina{
+			width: 600px;
+			background: #eeeeee;
+			border: 1px solid #dedede;
+			padding: 20px;
+			margin: 20px auto;
+		}
+		.inputFull{
+			width: 94.5%;
+			padding: 2.4%;
+			font-size: 16px;
+		}
+		.error{
+			text-align: center;
+			background: #ffa1a1;
+			border: 1px solid #ff7070;
+			padding: 20px;
+			margin: 15px 0 15px 0;
+		}
+		table{
+			width: 100%;
+			margin: 15px 0 15px 0;
+			border: 1px solid #dedede;
+		}
+		table tr th{
+			padding: 10px;
+		}
+		table tr td{
+			padding: 20px;
+		}
+		table tr:nth-child(odd){
+			background: #f6f6f6;
+		}
+		table tr:nth-child(even){
+			background: #ffffff;
+		}
+	</style>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+	<script type="text/javascript">
+		var app = angular.module("contador", []);
+		app.controller("contadorCTRL", function($scope){
+			$scope.numero = [];
+
+			$scope.getNumero = function(num){
+				for(var i=0; i<=num-1; i++){
+					$scope.numero[i] = i+1;
+				}
+				return $scope.numero;
+			}
+		});
+	</script>
+</head>
+<body>
+	<div class="pagina" ng-controller="contadorCTRL">
+		<input type="text" ng-model="valor" class="inputFull" placeholder="Digite um número">
+		<table ng-if="valor <= 10 && valor >= 1">
+			<tr>
+				<th>Resultado</th>
+			</tr>
+			<tr ng-repeat="a in getNumero(10)">
+				<td><strong>{{valor}}</strong> x {{a}} = {{valor*a}}</td>
+			</tr>
+		</table>
+		<div ng-if="valor > 10 || valor < 1 " class="error"><strong>Erro:</strong> Digite um número entre 1 e 10</div>
+	</div>
+</body>
+</html>
